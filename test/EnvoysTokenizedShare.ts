@@ -42,7 +42,7 @@ describe("EnvoysTokenizedShare", function () {
             await share.mint(owner.address, 1);
             await oracle.verify(owner.address, true);
             await expect(share.transfer(otherAccount.address, 1))
-                .to.be.rejectedWith("EnvoysTokenizedShare: Recipient not verified");
+                .to.be.rejectedWith("EnvoysTokenizedShare: Receiver not verified");
         });
     });
 
