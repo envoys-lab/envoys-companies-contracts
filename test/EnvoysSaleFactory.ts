@@ -41,7 +41,7 @@ describe("EnvoysSaleFactory", function () {
 
   it("Create", async function () {
     const { factory, token, payToken, owner, currentTime } = await loadFixture(deploy);
-
+    await token.approve(factory.address, 2000);
     await factory.create({
       token: token.address,
       soft: 1000,
