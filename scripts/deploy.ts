@@ -7,10 +7,15 @@ async function main() {
   await airdropFactory.deployed();
   console.log("Airdrop factory deployed:", airdropFactory.address);
 
-  // const EnvoysSaleFactory = await ethers.getContractFactory("EnvoysSaleFactory");
-  // const saleFactory = await EnvoysSaleFactory.deploy();
-  // await saleFactory.deployed();
-  // console.log("Sale factory deployed:", saleFactory.address);
+  const EnvoysSaleFactory = await ethers.getContractFactory("EnvoysSaleFactory");
+  const saleFactory = await EnvoysSaleFactory.deploy();
+  await saleFactory.deployed();
+  console.log("Sale factory deployed:", saleFactory.address);
+
+  const EnvoysKycOracle = await ethers.getContractFactory("EnvoysKycOracle");
+  const oracle = await EnvoysKycOracle.deploy();
+  await oracle.deployed();
+  console.log("Oracle deployed:", oracle.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
