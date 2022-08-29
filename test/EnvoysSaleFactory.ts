@@ -58,32 +58,5 @@ describe("EnvoysSaleFactory", function () {
 
     expect(sale.address).not.eq("0x0000000000000000000000000000000000000000");
   });
-
-  it("When trying to create a sale for one token a second time, an exception is expected", async function () {
-    const { factory, token, payToken, owner, currentTime } = await loadFixture(deploy);
-
-    await factory.create({
-      token: token.address,
-      soft: 1000,
-      hard: 2000,
-      buyToken: payToken.address,
-      price: 10,
-
-      start: currentTime,
-      end: currentTime + 3600
-    }, owner.address);
-
-    
-    await expect(factory.create({
-      token: token.address,
-      soft: 1000,
-      hard: 2000,
-      buyToken: payToken.address,
-      price: 10,
-
-      start: currentTime,
-      end: currentTime + 3600
-    }, owner.address)).to.be.revertedWith(("EnvoysSaleFactory: Sale already exists"))
-  });
   
 });
